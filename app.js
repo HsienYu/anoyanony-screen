@@ -29,9 +29,11 @@ aedes.on('publish', function (packet, client) {
   if (client) {
     console.log(`MESSAGE_PUBLISHED : MQTT Client ${(client ? client.id : 'AEDES BROKER_' + aedes.id)} has published message "${packet.payload}" on ${packet.topic} to aedes broker ${aedes.id}`)
 
-    if (packet.topic == "sip/3/#") {
-
+    if (packet.topic == "sip/3") {
+      console.log("ch3")
+      Max.outlet(packet.payload.toString())
     }
+
   }
 })
 

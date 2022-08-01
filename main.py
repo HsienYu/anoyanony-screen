@@ -5,7 +5,7 @@ import json
 fake = Faker(['zh_TW'])
 Faker.seed(0)
 fake.seed_instance(0)
-fake.seed_locale('zh_TW', 40)
+fake.seed_locale('zh_TW', 4000)
 
 app = Flask(__name__)
 
