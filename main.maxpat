@@ -129,8 +129,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -185,12 +183,12 @@
 						"R6" : [ 6 ],
 						"R7" : [ 7 ],
 						"R8" : [ 8 ],
-						"ch3" : [ -30.0 ],
-						"ch4" : [ -30.0 ],
-						"ch5" : [ -30.0 ],
-						"ch6" : [ -30.0 ],
-						"ch7" : [ -30.0 ],
-						"ch8" : [ -30.0 ]
+						"ch3" : [ -20.0 ],
+						"ch4" : [ -20.0 ],
+						"ch5" : [ -20.0 ],
+						"ch6" : [ -20.0 ],
+						"ch7" : [ -20.0 ],
+						"ch8" : [ -20.0 ]
 					}
 ,
 					"text" : "autopattr",
@@ -206,7 +204,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 9.0, 127.0, 29.5, 22.0 ],
-					"text" : "-30"
+					"text" : "-20"
 				}
 
 			}
@@ -1076,7 +1074,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "app.js",
-				"bootpath" : "~/Documents/anonanoy",
+				"bootpath" : "~/Documents/anoyanony-screen",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
