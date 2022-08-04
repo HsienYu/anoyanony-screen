@@ -68,15 +68,15 @@ aedes.on('publish', async function (packet, client) {
       waitAndCheck();
     } else if (packet.topic.includes('sip/')) {
       //sip client actions
+      console.log(`${packet.topic} : ${packet.payload}`);
+      let msg = bufferToJson(packet.payload).msg
+      let number = bufferToJson(packet.payload).number
+      console.log(packet.topic);
+      await mqttAction(msg, number, packet.topic);
+      console.log('something else');
     } else {
       //do something else
     }
-    console.log(`${packet.topic} : ${packet.payload}`);
-    let msg = bufferToJson(packet.payload).msg
-    let number = bufferToJson(packet.payload).number
-    console.log(packet.topic);
-    await mqttAction(msg, number, packet.topic);
-    console.log('something else');
   }
 })
 
