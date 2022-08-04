@@ -31,7 +31,7 @@ let sipLineStatus = [
 ]
 
 //max wait time
-let maxWaitTime = 15000;
+let maxWaitTime = 30000;
 
 //mqtt configuration  
 MQTT_Port = 1883
@@ -127,6 +127,7 @@ function mqttAction(msg, number, topic) {
 
 //publish to max
 function publishChannelStatus() {
+  console.log(`publish channel status: ${getAviableChannel().true}`);
   aedes.publish({ topic: "status", payload: `${getAviableChannel().true}` });
 }
 
