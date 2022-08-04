@@ -56,7 +56,7 @@ aedes.on('unsubscribe', function (subscriptions, client) {
   console.log(`TOPIC_UNSUBSCRIBED : MQTT Client ${(client ? client.id : client)} unsubscribed to topic: ${subscriptions.join(',')} from aedes broker ${aedes.id}`)
 })
 // emitted when a client publishes a message packet on the topic
-aedes.on('publish', function (packet, client) {
+aedes.on('publish', async function (packet, client) {
   if (client) {
     console.log(`MESSAGE_PUBLISHED : MQTT Client ${(client ? client.id : 'AEDES BROKER_' + aedes.id)} has published message "${packet.payload}" on ${packet.topic} to aedes broker ${aedes.id}`)
     if (packet.topic == "status" && packet.payload == "get") {
@@ -68,15 +68,15 @@ aedes.on('publish', function (packet, client) {
       waitAndCheck();
     } else if (packet.topic.includes('sip/')) {
       //sip client actions
-      console.log(`${packet.topic} : ${packet.payload}`);
-      let msg = bufferToJson(packet.payload).msg
-      let number = bufferToJson(packet.payload).number
-      console.log(packet.topic);
-      mqttAction(msg, number, packet.topic);
     } else {
-      console.log('something else');
       //do something else
     }
+    console.log(`${packet.topic} : ${packet.payload}`);
+    let msg = bufferToJson(packet.payload).msg
+    let number = bufferToJson(packet.payload).number
+    console.log(packet.topic);
+    await mqttAction(msg, number, packet.topic);
+    console.log('something else');
   }
 })
 
@@ -103,30 +103,30 @@ async function getData() {
 
 
 //mqtt sip client actions
-function mqttAction(msg, number, topic) {
+async function mqttAction(msg, number, topic) {
   let ch = topic.split('/')[1];
   if (msg == "bye") {
     console.log(`${topic} : end call ${ch} ${number}`);
-    mapChannels(ch, false);
+    await mapChannels(ch, false);
     console.log(getAviableChannel());
-    publishChannelStatus();
+    await publishChannelStatus();
   }
   if (msg == "answercall") {
     console.log(`${topic} : call answered ${number}`);
     mapChannels(ch, true);
     console.log(getAviableChannel());
-    publishChannelStatus();
+    await publishChannelStatus();
   }
   if (msg == "endcall") {
     console.log(`${topic} : end call ${ch} ${number}`);
     mapChannels(ch, false);
     console.log(getAviableChannel());
-    publishChannelStatus();
+    await publishChannelStatus();
   }
 }
 
 //publish to max
-function publishChannelStatus() {
+async function publishChannelStatus() {
   console.log(`publish channel status: ${getAviableChannel().true}`);
   aedes.publish({ topic: "status", payload: `${getAviableChannel().true}` });
 }
