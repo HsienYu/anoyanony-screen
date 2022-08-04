@@ -11,14 +11,16 @@ app = Flask(__name__)
 
 
 def get_syth_data():
-    temp = {}
+    data = []
     for _ in range(30):
-        arr = []
-        arr.append(fake.name())
-        arr.append(fake.ascii_free_email())
-        arr.append(fake.phone_number())
-        temp[_] = arr
-    return temp
+        temp = {}
+        temp['id'] = _
+        temp['name'] = fake.name()
+        temp['phone'] = fake.phone_number()
+        temp['email'] = fake.ascii_free_email()
+        temp['used'] = False
+        data.append(temp)
+    return data
 
 
 @app.route('/')
