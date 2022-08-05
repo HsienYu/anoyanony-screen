@@ -73,9 +73,9 @@ aedes.on('publish', async function (packet, client) {
       let number = bufferToJson(packet.payload).number
       console.log(packet.topic);
       await mqttAction(msg, number, packet.topic);
-      console.log('something else');
     } else {
       //do something else
+      console.log('something else');
     }
   }
 })
