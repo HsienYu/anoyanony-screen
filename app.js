@@ -31,7 +31,7 @@ let sipLineStatus = [
 ]
 
 //max wait time
-let maxWaitTime = 30000;
+let maxWaitTime = 45000;
 
 //mqtt configuration  
 MQTT_Port = 1883
