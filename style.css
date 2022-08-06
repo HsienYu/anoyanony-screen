@@ -1,0 +1,35 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    background-color: #000000;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.grid-item {
+    background-color: rgba(19, 19, 19, 0.8);
+    border: 0.6px solid rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+}
+
+.grid-item p {
+    font-size: 14px;
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+#scroll-to-bottom {
+    border: 5px solid #1a1a1a;
+    padding: 2em;
+    width: 50%;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+
+body {
+    background-color: #000000;
+}

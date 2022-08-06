@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 def get_syth_data():
     data = []
-    for _ in range(30):
+    for _ in range(36):
         temp = {}
         temp['id'] = _
         temp['name'] = fake.name()
