@@ -1,5 +1,11 @@
+var script = document.currentScript;
+var fullUrl = script.src;
+
+
+var jsonUrl = fullUrl.replace("index.js", "data/foobar.json")
+console.log(jsonUrl);
 function get_data() {
-    fetch("./data/foobar.json")
+    fetch(jsonUrl)
         .then(response => {
             return response.json();
         })

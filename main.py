@@ -1,5 +1,5 @@
 from faker import Faker
-from flask import Flask
+from flask import Flask, render_template
 import json
 
 fake = Faker(['zh_TW'])
@@ -23,9 +23,14 @@ def get_syth_data():
     return data
 
 
+@app.route('/get_data')
+def get_data():
+    return json.dumps(get_syth_data())
+
+
 @app.route('/')
 def index():
-    return json.dumps(get_syth_data())
+    return render_template('index.html')
 
 
 app.run()

@@ -8,7 +8,7 @@ const fsPromises = require('fs/promises');
 const path = require('path');
 
 //file path 
-let filePath = path.join(__dirname, 'data', 'foobar.json');
+let filePath = path.join(__dirname, 'static', 'data/foobar.json');
 
 //audio interface channels
 let audioChannels = [
@@ -85,7 +85,7 @@ aedes.on('publish', async function (packet, client) {
 //get and generativeate json dataset of fake profiles
 async function getData() {
   await axios
-    .get('http://127.0.0.1:5000/')
+    .get('http://127.0.0.1:5000/get_data')
     .then(res => {
       console.log(`statusCode: ${res.status}`);
       let data = res.data;
